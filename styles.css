@@ -1,0 +1,81 @@
+/* styles.css
+   Dynamic animated gradient background + centered rounded box using Courier font
+*/
+
+:root{
+  --card-bg: rgba(255,255,255,0.08);
+  --card-border: rgba(255,255,255,0.18);
+  --text-color: #ffffff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+
+body{
+  font-family: "Courier New", Courier, monospace;
+  color: var(--text-color);
+  height:100vh;
+  overflow:hidden;
+  background: linear-gradient(270deg,
+      #ff7a7a 0%,
+      #ffd47a 20%,
+      #7affc2 40%,
+      #7ab1ff 60%,
+      #c77aff 80%,
+      #ff7aa6 100%);
+  background-size: 1200% 1200%;
+  animation: gradientShift 18s ease infinite;
+  display:grid;
+  place-items:center;
+}
+
+@media (prefers-reduced-motion: reduce){
+  body{
+    animation: none;
+  }
+}
+
+@keyframes gradientShift{
+  0%{background-position:0% 50%}
+  25%{background-position:50% 50%}
+  50%{background-position:100% 50%}
+  75%{background-position:50% 50%}
+  100%{background-position:0% 50%}
+}
+
+.stage{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+}
+
+.card{
+  min-width:260px;
+  max-width:90%;
+  padding:2rem 2.4rem;
+  border-radius:20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  backdrop-filter: blur(6px);
+}
+
+.greeting{
+  font-size:1.15rem;
+  letter-spacing:0.6px;
+  color:var(--text-color);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.25);
+  white-space:nowrap;
+}
+
+@media (min-width:900px){
+  .greeting{font-size:1.4rem}
+  .card{padding:2.5rem 3rem}
+}
